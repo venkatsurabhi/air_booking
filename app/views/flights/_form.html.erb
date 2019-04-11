@@ -1,0 +1,65 @@
+<%= form_for(flight) do |f| %>
+  <% if flight.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(flight.errors.count, "error") %> prohibited this flight from being saved:</h2>
+
+      <ul>
+      <% flight.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+  <%= f.label :flight_type_id %>
+
+  <%= f.select :flight_type_id, 
+  options_from_collection_for_select(FlightType.all, "id", "name"),
+   :prompt => "Select a Flight type" %>
+
+   
+  </div>
+
+  <div class="field">
+    <%= f.label :origin %>
+    <%= f.select :origin, Flight.cities.values %>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :destnation %>
+    <%= f.select :destnation, Flight.cities.values %>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :departure %>
+    <%= f.datetime_select :departure %>
+  </div>
+
+  <div class="field">
+    <%= f.label :arrival %>
+    <%= f.datetime_select :arrival %>
+  </div>
+
+  <%= f.fields_for :seat_layouts do |ff| %>
+    <div>
+    <%ff.label :flight_class_id, value: ff.object.flight_class.name %>
+      <%= ff.hidden_field :flight_class_id%>
+      <%= ff.label :rows %> 
+      <%= ff.text_field :rows %>
+
+      <%= ff.label :seats %>
+      <%= ff.text_field :seats %>
+
+      <%= ff.label :fare %>
+      <%= ff.text_field :fare %>
+
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

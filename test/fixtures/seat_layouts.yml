@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  flight_class_id: 1
+  rows: 1
+  seats: 1
+  total_seats: 1
+  flight_id: 1
+  fare: 1.5
+
+two:
+  id: 1
+  flight_class_id: 1
+  rows: 1
+  seats: 1
+  total_seats: 1
+  flight_id: 1
+  fare: 1.5
