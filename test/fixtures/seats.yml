@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  flight_id: 1
+  seat_layout_id: 1
+  seat_no: MyString
+  user_id: 1
+  booking_id: 1
+  allocated: false
+
+two:
+  flight_id: 1
+  seat_layout_id: 1
+  seat_no: MyString
+  user_id: 1
+  booking_id: 1
+  allocated: false

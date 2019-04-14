@@ -1,4 +1,8 @@
 class FlightsController < ApplicationController
+
+ 
+  before_action :authenticate_user!, except: [:search]
+  load_and_authorize_resource :except => [:search]
   before_action :set_flight, only: [:show, :edit, :update, :destroy]
 
   # GET /flights
@@ -18,6 +22,18 @@ class FlightsController < ApplicationController
     FlightClass.all.each do |fc|
       @flight.seat_layouts.build(flight_class_id: fc.id )
     end  
+  end
+  
+  def search
+    @flight = Flight.new
+    if !params[:departure].blank?
+      @flights = Flight.search_flights(departure: params[:departure].to_s, from: params[:from], to: params[:to])      
+      if @flights.count > 0
+        render :file => '/flights/flights'#,  layout: 'application'  
+      else
+          
+      end  
+    end    
   end
 
   # GET /flights/1/edit
@@ -64,6 +80,7 @@ class FlightsController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_flight
@@ -73,7 +90,7 @@ class FlightsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def flight_params
       params.require(:flight).permit( 
-      :flight_type_id, :user_id, :origin, :destnation, :departure, :arrival,
+      :flight_type_id, :user_id, :origin, :destination, :departure, :arrival,
       seat_layouts_attributes: [:rows, :seats,:fare,:flight_class_id])
     end
 end

@@ -1,0 +1,44 @@
+<h4>Congragulations your Booking is Successfully done. </h4>
+
+<table style="width:100%">
+
+<tr>
+<td>
+Flight:
+</td>
+<td>
+<%='Indigo-' + @booking.flight.id.to_s%></td>
+</td>
+</tr>
+<tr>
+<td>
+Departure:
+</td>
+<td>
+<%=@booking.flight.departure%>
+</td>
+</tr>
+<tr>
+<td>
+Arrival:
+</td>
+<td>
+<%=@booking.flight.arrival%>
+</td>
+</tr>
+<tr><td>Passengers:</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>PNR</td>
+</tr>
+
+<%@booking.passengers.each do |member|%>
+
+    <tr>
+    <td><%=member.full_name%></td>
+    <td><%=member.pnr%></td>
+    </tr>
+<%end%>    
+
+</table>

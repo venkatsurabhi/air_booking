@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  flight_id: 1
+  flight_class_id: 1
+  seats: 1
+  user_id: 1
+  pnr_number: MyString
+  cancelled: false
+  fare: 1.5
+
+two:
+  flight_id: 1
+  flight_class_id: 1
+  seats: 1
+  user_id: 1
+  pnr_number: MyString
+  cancelled: false
+  fare: 1.5

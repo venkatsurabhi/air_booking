@@ -1,0 +1,14 @@
+<table style="width:100%">
+<%@flight.seat_layouts.order('flight_class_id desc').each do |layout|%>
+    <tr><td><%=layout.flight_class.name%></td></tr>
+    <%layout.rows.times do |i|%>
+        <tr>
+            <%layout.seats.times do |j|%>
+                <td>
+                <input type='checkbox'>
+                </td>
+            <%end%>   
+        </tr>
+    <%end%>    
+<%end%>    
+</table>

@@ -1,0 +1,36 @@
+
+    
+  <table style="width:100%">
+  <tr align="left">
+    <th>Flight</th>
+    <th>Departure</th> 
+    <th>Arrival</th>
+    <th></th>
+  </tr>
+  
+    <%@flights.each do |flight|
+      seat_layout = flight.get_seat_layout(params[:flight_class_id])
+      %>
+      <%= form_tag("#{new_booking_path}", method: "get") do %>
+
+      <tr>
+      
+      <td>
+      <%=hidden_field_tag :flight_id, flight.id%>
+      <%=hidden_field_tag :seats, params[:seats].to_i+1%>
+      <%=hidden_field_tag :flight_class_id, params[:flight_class_id]%>
+      <%=hidden_field_tag :seat_layout_id, seat_layout.try(:id)%>
+      <%='Indigo-' + flight.id.to_s%></td>
+      <td><%=flight.departure%></td> 
+      
+      <td><%=flight.arrival%></td>
+      <td><%=seat_layout.available_seats%> seats available</td>
+      <td> <%= submit_tag("Booknow", disabled: !seat_layout.seats_available?) %>
+      </td>
+      </tr>
+      <% end %>
+
+
+    <%end%>    
+    </table>
+    

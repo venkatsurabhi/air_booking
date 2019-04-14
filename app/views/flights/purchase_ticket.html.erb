@@ -1,0 +1,42 @@
+<%= form_for(@booking) do |f| %>
+   
+  
+    <div class="field">
+    <%= f.hidden_field :flight_class_id%>
+    <%= f.hidden_field :flight_id%>
+    <%= f.hidden_field :seats%>
+    <%= f.hidden_field :seat_layout_id%>
+    </div>
+
+    <table style="width:100%">
+    
+    <%= f.fields_for :passengers do |ff| %>
+        
+        <tr>
+          <td>
+          <%= ff.label :full_name %>
+          </td>
+          <td> 
+          <%= ff.text_field :full_name %>
+          </td>  
+          <td> 
+          <%= ff.label :age %>
+          </td>
+          <td> 
+          <%= ff.text_field :age %>
+          </td>
+          <td>  
+          <%= ff.label :gender %>
+          </td>
+          <td> 
+          <%= ff.text_field :gender %>
+          </td>
+          
+        </tr>  
+        
+      <% end %>
+    </table>    
+    <div class="actions">
+    <%= f.submit "Make Payment"%>
+  </div>
+<%end%>    

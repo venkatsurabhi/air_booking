@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+<h4>Enter PNR number </h4>
+
+<%= form_tag("/select_seats", method: "get") do %>
+<%=text_field_tag :pnr%>
+<%= submit_tag("Checkin") %>
+<%end%>

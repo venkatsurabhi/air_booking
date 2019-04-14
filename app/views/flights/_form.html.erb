@@ -28,8 +28,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :destnation %>
-    <%= f.select :destnation, Flight.cities.values %>
+    <%= f.label :destination %>
+    <%= f.select :destination, Flight.cities.values %>
 
   </div>
 
@@ -45,7 +45,7 @@
 
   <%= f.fields_for :seat_layouts do |ff| %>
     <div>
-    <%ff.label :flight_class_id, value: ff.object.flight_class.name %>
+    <%=ff.label :flight_class_id, value: ff.object.flight_class.name %>
       <%= ff.hidden_field :flight_class_id%>
       <%= ff.label :rows %> 
       <%= ff.text_field :rows %>

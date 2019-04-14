@@ -1,0 +1,19 @@
+
+<%= form_tag("/search", method: "get") do %>
+    <%= label_tag(:from, "From:") %>
+    <%=select_tag 'from', options_for_select(Flight.cities.values, selected: 'Hyderabad')%>
+
+    <%= label_tag(:to, "To:") %>
+    <%=select_tag 'to', options_for_select(Flight.cities.values)%>
+
+    <%= label_tag(:departure, "Departure:") %>
+    <%= date_field_tag(:departure) %>
+
+    <%= label_tag(:class, "Class:") %>
+    <%=select_tag 'flight_class_id', options_for_select(FlightClass.all.map{ |c| [c.name, c.id]})%>
+
+    <%= label_tag(:pass, "No of passengers:") %>
+    <%=select_tag 'seats', options_for_select(Flight.passengers)%>
+   
+    <%= submit_tag("Search") %>
+  <% end %>

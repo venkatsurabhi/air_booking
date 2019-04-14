@@ -1,0 +1,55 @@
+
+<%= form_for(@booking) do |f| %>
+    <% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking.errors.count, "error") %>
+       prohibited this booking from being saved:</h2>
+
+      <ul>
+      <% @booking.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+    <div class="field">
+    <%= f.hidden_field :flight_class_id%>
+    <%= f.hidden_field :flight_id%>
+    <%= f.hidden_field :seats%>
+    <%= f.hidden_field :user_id%>
+    <%= f.hidden_field :seat_layout_id%>
+    </div>
+
+    <table style="width:100%">
+    
+    <%= f.fields_for :passengers do |ff| %>
+        
+        <tr>
+          <td>
+          <%= ff.label :full_name %>
+          </td>
+          <td> 
+          <%= ff.text_field :full_name %>
+          </td>  
+          <td> 
+          <%= ff.label :age %>
+          </td>
+          <td> 
+          <%= ff.text_field :age %>
+          </td>
+          <td>  
+          <%= ff.label :gender %>
+          </td>
+          <td> 
+          <%= ff.select :gender, ['Male','Female'] %>
+          </td>
+          
+        </tr>  
+        
+      <% end %>
+    </table>    
+    <div class="actions">
+    <%= f.submit "Make Payment"%>
+  </div>
+<%end%>    
