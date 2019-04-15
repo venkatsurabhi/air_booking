@@ -14,10 +14,18 @@ class BookingsController < ApplicationController
 
     def checkin_seats
       @booking = Booking.joins(:user).joins(:passengers).
-      where("users.id=? and pnr=?",current_user.id,params[:pnr]).first
+      where("pnr=?", params[:pnr]).first
       if params[:selected_seats].count > @booking.seats.to_i
+        redirect_to '/checkin', notice: "Select only #{@booking.seats} seats"
       else
-        
+        passenger_ids = @booking.passenger_ids
+        params[:selected_seats].each_with_index do |seat,i|
+          seat_obj = @booking.flight.seats.where('seat_no=?', seat.to_s).first
+          seat_obj.passenger_id = passenger_ids[i]
+          seat_obj.booking_id = @booking.id
+          seat_obj.save
+        end
+        render partial: 'checkin'
       end    
     end
 

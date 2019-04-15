@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <%= form_tag("/checkin_seats", method: "get") do %>
 <%=hidden_field_tag 'pnr', params[:pnr]%>
 <%=hidden_field_tag 'book_seats', @booking.seats%>
@@ -10,7 +12,7 @@
         <tr>
             <%layout.seats.times do |j|
                 val = seat_available?(k.to_s, layout)
-                puts "------val=#{val}" if val
+                
                 %>
                 <td>
                 <%=k%>
