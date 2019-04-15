@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190414111702) do
+ActiveRecord::Schema.define(version: 20190415121035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20190414111702) do
     t.integer  "flight_id"
     t.integer  "seat_layout_id"
     t.string   "seat_no"
-    t.integer  "user_id"
+    t.integer  "passenger_id"
     t.integer  "booking_id"
     t.boolean  "allocated",      default: false
     t.datetime "created_at",                     null: false
