@@ -12,6 +12,15 @@ class BookingsController < ApplicationController
         end    
     end   
 
+    def checkin_seats
+      @booking = Booking.joins(:user).joins(:passengers).
+      where("users.id=? and pnr=?",current_user.id,params[:pnr]).first
+      if params[:selected_seats].count > @booking.seats.to_i
+      else
+        
+      end    
+    end
+
     def select_seats
       @booking = Booking.joins(:user).joins(:passengers).
       where("users.id=? and pnr=?",current_user.id,params[:pnr]).first
@@ -19,6 +28,7 @@ class BookingsController < ApplicationController
         redirect_to '/checkin', notice: 'Enter valid pnr number'
       else
         @flight = @booking.flight  
+        
       end   
     end  
 

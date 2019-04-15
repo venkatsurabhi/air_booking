@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   }
 
 
+
 root to: 'flights#search'
 
 get '/search', to: 'flights#search'
-#post '/purchase_ticket', to: 'flights#purchase_ticket'
 get '/select_seats', to: 'bookings#select_seats'
 get '/checkin', to: 'bookings#checkin'
+get '/checkin_seats', to: 'bookings#checkin_seats'
 end

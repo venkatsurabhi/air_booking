@@ -43,6 +43,7 @@ class FlightsController < ApplicationController
   # POST /flights
   # POST /flights.json
   def create
+    params[:flight][:user_id] = current_user.id
     @flight = Flight.new(flight_params)
 
     respond_to do |format|

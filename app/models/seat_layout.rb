@@ -2,6 +2,7 @@
 class SeatLayout < ApplicationRecord
     belongs_to :flight, optional: true
     belongs_to :flight_class
+    has_many :total_seats, class_name: 'Seat'
 
     before_create :set_seats
 

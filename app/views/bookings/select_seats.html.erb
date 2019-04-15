@@ -1,14 +1,29 @@
+<%= form_tag("/checkin_seats", method: "get") do %>
+<%=hidden_field_tag 'pnr', params[:pnr]%>
+<%=hidden_field_tag 'book_seats', @booking.seats%>
+
 <table style="width:100%">
-<%@flight.seat_layouts.order('flight_class_id desc').each do |layout|%>
-    <tr><td><%=layout.flight_class.name%></td></tr>
+<%k  = 1
+@flight.seat_layouts.order('flight_class_id desc').each do |layout|%>
+    <tr><td><strong><%=layout.flight_class.name%></strong></td></tr>
     <%layout.rows.times do |i|%>
         <tr>
-            <%layout.seats.times do |j|%>
+            <%layout.seats.times do |j|
+                val = seat_available?(k.to_s, layout)
+                puts "------val=#{val}" if val
+                %>
                 <td>
-                <input type='checkbox'>
+                <%=k%>
+                <%=check_box_tag 'selected_seats[]', k, val, disabled: val%>
+
                 </td>
-            <%end%>   
+            <%
+        k += 1
+        end%>   
         </tr>
     <%end%>    
 <%end%>    
 </table>
+
+<%= submit_tag("Select Seats") %>
+<%end%>

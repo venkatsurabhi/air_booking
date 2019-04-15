@@ -59,3 +59,4 @@ gem 'bootstrap-datepicker-rails'
 gem 'pretty_id'
 
 gem 'cancancan'
+gem 'bootstrap', '~> 4.3.1'
