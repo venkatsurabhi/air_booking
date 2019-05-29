@@ -47,6 +47,10 @@ jobs:
             - rails-demo-yarn-
 
       - run:
+          name: use-custom-database-yaml
+          command: 'mv .circleci/database.ci.yml config/database.yml'      
+
+      - run:
           name: Yarn Install
           command: yarn install --cache-folder ~/.cache/yarn
 
