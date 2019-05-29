@@ -1,0 +1,6 @@
+test:
+  adapter: postgresql
+  username: circleci-demo-ruby
+  password: 
+  database: rails_blog
+  host: 127.0.0.1
